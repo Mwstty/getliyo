@@ -1,0 +1,70 @@
+name: Windows EXE derle
+
+on:
+  release:
+    types: [published]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+
+      - name: Bağımlılıkları kur
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+          pip install -U "yt-dlp[default]"
+
+      - name: FFmpeg ve Deno indir (bin\)
+        run: python scripts/fetch_ffmpeg.py
+
+      - name: Testler
+        run: python -m pytest -q tests
+
+      - name: Web paketini üret
+        run: python scripts/build_web.py
+
+      - name: Kaynağı karart (PyArmor)
+        run: python scripts/build_obfuscate.py
+
+      - name: PyInstaller ile EXE oluştur
+        run: python -m PyInstaller --noconfirm --clean --distpath dist --workpath build/work build/getliyo.spec
+
+      - name: Kurulum programı (Inno Setup)
+        shell: pwsh
+        run: |
+          $iscc = "${env:ProgramFiles(x86)}\Inno Setup 6\ISCC.exe"
+          if (-not (Test-Path $iscc)) { choco install innosetup -y --no-progress; }
+          & $iscc installer\getliyo.iss
+
+      - name: Zip paketle (EXE + bin)
+        shell: pwsh
+        run: |
+          New-Item -ItemType Directory -Force out | Out-Null
+          Copy-Item dist\getliyo.exe out\
+          Copy-Item bin out\bin -Recurse -Exclude .gitkeep
+          Compress-Archive -Path out\* -DestinationPath getliyo-windows.zip
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: getliyo-windows
+          path: |
+            getliyo-windows.zip
+            Output/getliyo-setup.exe
+
+      - name: Release'e ekle
+        if: github.event_name == 'release'
+        shell: pwsh
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: gh release upload "${{ github.event.release.tag_name }}" getliyo-windows.zip Output/getliyo-setup.exe --clobber
