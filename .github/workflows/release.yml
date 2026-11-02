@@ -46,10 +46,18 @@ jobs:
       - name: EXE içeriğini doğrula (eksik paket varsa derlemeyi durdur)
         shell: pwsh
         run: |
-          $list = pyi-archive_viewer -l -b dist\getliyo.exe 2>&1 | Out-String
-          foreach ($m in "PySide6.QtWidgets", "PySide6.QtCore", "httpx", "fastapi", "yt_dlp", "bs4", "PIL") {
-            if ($list -notmatch [regex]::Escape($m)) { Write-Error "EXE içinde $m yok"; exit 1 }
+          $missing = @()
+          # Derlenmiş (.pyd/.dll) dosyalar: exe arşivinin dosya listesi
+          $files = pyi-archive_viewer -l -b dist\getliyo.exe 2>&1 | Out-String
+          foreach ($f in 'PySide6\QtWidgets.pyd', 'PySide6\QtCore.pyd', 'PySide6\QtGui.pyd', 'PySide6\Qt6Core.dll') {
+            if (-not $files.Contains($f)) { $missing += $f }
           }
+          # Python modülleri: PyInstaller'ın PYZ içerik listesi
+          $pyz = Get-Content build\work\getliyo\PYZ-00.toc -Raw
+          foreach ($m in 'httpx', 'fastapi', 'starlette', 'pydantic', 'yt_dlp', 'bs4', 'PIL', 'uvicorn', 'server.app') {
+            if ($pyz -notmatch "'$([regex]::Escape($m))[.']") { $missing += $m }
+          }
+          if ($missing) { Write-Host "EXE içinde eksik: $($missing -join ', ')"; exit 1 }
           Write-Host "EXE içeriği tamam."
 
       - name: Kurulum programı (Inno Setup)
