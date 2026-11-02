@@ -1,0 +1,7 @@
+{
+  "terms": {"title": "Kullanım Şartları", "description": "Hizmetin kullanım koşulları, sorumluluklar ve yasak kullanımlar."},
+  "privacy": {"title": "Gizlilik Politikası ve KVKK", "description": "Hangi verilerin işlendiği, saklama süreleri ve KVKK/GDPR kapsamındaki haklarınız."},
+  "copyright": {"title": "Telif Hakkı Bildirimi", "description": "Hak sahiplerinin içerik kaldırma talebini nasıl ileteceği."},
+  "cookies": {"title": "Çerez Politikası", "description": "Kullandığımız çerezler ve depolama; reklam ve istatistik çerezleri için onay."},
+  "contact": {"title": "İletişim ve Künye", "description": "Hizmet sağlayıcı bilgileri ve iletişim kanalları."}
+}

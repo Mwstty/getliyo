@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" aria-label="getliyo insan karakter logosu">
+<circle cx="256" cy="256" r="252" fill="#34506b"/>
+<path d="M128 448c8-70 48-110 103-118l25 27 25-27c58 9 94 49 103 118" fill="#d89a52" stroke="#26231e" stroke-width="9" stroke-linejoin="round"/>
+<path d="M157 200c-3-63 37-112 99-112 67 0 104 48 99 112l-13 75H170z" fill="#26231e"/>
+<path d="M174 185c0-53 33-87 82-87s82 34 82 87v66c0 51-34 82-82 82s-82-31-82-82z" fill="#f0c69b" stroke="#26231e" stroke-width="9"/>
+<path d="M168 192c4-59 40-100 80-100-8 18-6 31 0 42 16-28 47-38 70-31 19 5 33 17 41 33-31-10-54-2-69 11 24 2 38 10 51 23-41-12-78-5-109 21-25-11-45-11-64 1z" fill="#26231e"/>
+<path d="M204 216q12-10 24 0m57 0q12-10 24 0" fill="none" stroke="#26231e" stroke-width="8" stroke-linecap="round"/><circle cx="216" cy="228" r="5" fill="#26231e"/><circle cx="296" cy="228" r="5" fill="#26231e"/><path d="M256 233l-7 20 9 3m-24 16q23 16 45-1" fill="none" stroke="#9a5b30" stroke-width="6" stroke-linecap="round"/>
+<path d="M207 350h68l29 29v84H207a10 10 0 0 1-10-10v-93a10 10 0 0 1 10-10z" fill="#fbfaf7" stroke="#26231e" stroke-width="8" stroke-linejoin="round"/><path d="M275 351v18a10 10 0 0 0 10 10h19" fill="#e9e6df" stroke="#26231e" stroke-width="7"/><path d="M256 392v44m-18-18 18 18 19-18" fill="none" stroke="#34506b" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>

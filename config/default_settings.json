@@ -1,0 +1,8 @@
+{
+  "download_dir": "",
+  "default_quality": "best",
+  "default_video_format": "mp4",
+  "default_audio_format": "mp3",
+  "conflict_behavior": "new",
+  "naming": "title"
+}

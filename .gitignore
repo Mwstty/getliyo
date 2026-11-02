@@ -1,0 +1,31 @@
+.venv/
+__pycache__/
+*.pyc
+.pytest_cache/
+dist/
+build/work/
+*.egg-info/
+bin/*.exe
+!bin/.gitkeep
+Output/
+
+# Yerel/gizli dosyalar (yayınlanmamalı)
+server-data/
+*.log
+.env
+.env.*
+
+# Geçici / yerel
+dl/
+everything-claude-code/yedek/
+everything-claude-code/
+Yapay-Zeka-Izi-Temizleme-Rehberi*
+.claude/settings.local.json
+.claude/skills/impeccable/scripts/bin/
+
+# Üretim web paketi (scripts/build_web.py üretir)
+server/web-dist/
+getliyo-apk/node_modules/
+getliyo-apk/android/build/
+getliyo-apk/android/app/build/
+getliyo-apk/android/.gradle/

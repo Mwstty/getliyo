@@ -1,0 +1,7 @@
+{
+  "terms": {"title": "Terms of Use", "description": "Conditions for using the service, user responsibilities and prohibited uses."},
+  "privacy": {"title": "Privacy Policy", "description": "What data is processed, how long it is kept, and your rights under GDPR and KVKK."},
+  "copyright": {"title": "Copyright Notice", "description": "How rights holders can submit a content removal request."},
+  "cookies": {"title": "Cookie Policy", "description": "The cookies and storage we use, and consent for advertising and analytics cookies."},
+  "contact": {"title": "Contact and Legal Notice", "description": "Service provider details and ways to contact us."}
+}

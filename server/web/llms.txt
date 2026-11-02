@@ -1,0 +1,9 @@
+# getliyo
+
+> A free web tool to download publicly available Instagram videos, photos, Reels, Stories and IGTV (also other sites). No sign-up; prepared files are deleted within 15 minutes. Languages: Türkçe, English, العربية.
+
+## Pages
+- [English]({{SITE_URL}}/en/): paste a link and download
+- [Türkçe]({{SITE_URL}}/tr/): bağlantıyı yapıştır ve indir
+- [العربية]({{SITE_URL}}/ar/): الصق الرابط وحمّل
+- [Terms of Use]({{SITE_URL}}/en/terms), [Privacy]({{SITE_URL}}/en/privacy), [Copyright / DMCA]({{SITE_URL}}/en/copyright), [Cookies]({{SITE_URL}}/en/cookies), [Contact]({{SITE_URL}}/en/contact)

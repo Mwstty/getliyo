@@ -1,0 +1,13 @@
+{
+  "manifest_version": 3,
+  "name": "getliyo",
+  "version": "1.0.0",
+  "description": "Sayfadaki video, görsel veya ses bağlantısını tek tıkla getliyo uygulamasına gönderir.",
+  "icons": { "16": "icons/icon16.png", "48": "icons/icon48.png", "128": "icons/icon128.png" },
+  "action": {
+    "default_title": "Bu sayfayı getliyo'ye gönder",
+    "default_icon": { "16": "icons/icon16.png", "48": "icons/icon48.png", "128": "icons/icon128.png" }
+  },
+  "background": { "service_worker": "background.js" },
+  "permissions": ["contextMenus", "nativeMessaging", "activeTab", "tabs", "notifications"]
+}

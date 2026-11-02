@@ -1,0 +1,91 @@
+﻿====================================================
+ GETLIYO — KULLANIM KILAVUZU
+====================================================
+
+Bu programı bilgisayarına kurdun. Aşağıdakiler sıfırdan, hiçbir şey
+bilmediğini varsayarak yazıldı.
+
+
+1) PROGRAMI NASIL AÇARIM?
+--------------------------
+Windows'ta sol alttaki büyüteç/arama simgesine tıkla (ya da klavyeden
+Windows tuşuna bas) ve "getliyo" yaz. Çıkan sonuca tıkla.
+
+Kurulum sırasında "Masaüstü kısayolu oluştur" kutusunu işaretlediysen
+masaüstünde de bir simge göreceksin — ona çift tıklamak da aynı işi
+yapar.
+
+Görev çubuğuna (ekranın altındaki şerit) sabitlemek istersen: programı
+aç, görev çubuğunda beliren simgesine sağ tıkla, "Görev çubuğuna
+sabitle" seçeneğine tıkla. (Bu adımı kurulum otomatik yapamıyor —
+Windows güvenlik nedeniyle bunu yalnızca kullanıcının kendisinin
+yapmasına izin veriyor.)
+
+
+2) NASIL VİDEO/GÖRSEL/SES İNDİRİRİM?
+--------------------------------------
+  1. Program açıkken, üstteki uzun kutuya bir bağlantı yapıştır
+     (YouTube, Instagram, TikTok, X, Pinterest, doğrudan bir resim
+     linki, ne olursa).
+  2. "ANALİZ ET" butonuna bas.
+  3. Aşağıda çıkan tablodan istediğin çözünürlük/formatı seç
+     (ya da üstteki hızlı butonlardan "EN İYİ KALİTE" gibi birine bas).
+  4. "SEÇİLENİ İNDİR" butonuna bas.
+  5. İndirme, alt kısımda yüzde ve hız göstererek ilerler. Bittiğinde
+     "KLASÖRDE GÖSTER" butonuyla dosyayı bulabilirsin.
+
+İndirilen dosyalar varsayılan olarak şu klasöre kaydedilir:
+  Belgelerim > İndirilenler > getliyo
+İstersen program içindeki "AYARLAR" bölümünden bu klasörü değiştirebilirsin.
+
+
+3) TARAYICI EKLENTİSİ (isteğe bağlı — sağ tık ile indirme)
+------------------------------------------------------------
+Bu eklenti sayesinde herhangi bir sayfada bir videoya/linke sağ
+tıklayıp direkt "getliyo ile indir" diyebilirsin; program
+otomatik açılır ve o bağlantıyı analiz etmeye başlar.
+
+Not: Bu eklenti Chrome Web Mağazası'ndan indirilemez (Google, video
+indirme eklentilerini yasakladığı için). Bunun yerine kendi
+bilgisayarına elle yüklüyorsun — tamamen güvenli, sadece birkaç
+tıklama fazladan gerekiyor.
+
+Kurulum adımları:
+  1. Chrome'u aç, adres çubuğuna şunu yaz ve Enter'a bas:
+         chrome://extensions
+  2. Sağ üstteki "Geliştirici modu" anahtarını AÇIK konuma getir.
+  3. "Paketlenmemiş öğe yükle" butonuna bas.
+  4. Bu programın kurulduğu klasördeki "browser-extension" klasörünü
+     seç. (Kurulum sırasında seçtiğin klasörün içinde bulabilirsin,
+     örnek: C:\Program Files\getliyo\browser-extension)
+  5. Eklenti listede göründü. Kartın altında yazan, 32 harften oluşan
+     bir ID (kimlik) göreceksin — onu kopyala.
+  6. Başlat menüsünden "Tarayıcı Eklentisini Kaydet" aracını aç
+     (kurulum sırasında bu kısayol otomatik oluşturuldu).
+  7. Açılan siyah pencereye kopyaladığın ID'yi yapıştır, Enter'a bas.
+  8. Chrome'u tamamen kapatıp yeniden aç.
+
+Artık herhangi bir sayfada bir bağlantıya sağ tıklayıp "getliyo
+ile indir" seçeneğini kullanabilirsin. Ayrıca tarayıcının
+sağ üst köşesindeki eklenti simgesine tıklarsan, o an açık olan
+sayfanın adresini de aynı şekilde gönderebilirsin.
+
+
+4) SIK SORULAN SORUNLAR
+--------------------------
+"FFmpeg bulunamadı" yazıyor:
+  Kurulum düzgün tamamlanmamış olabilir. Programı kaldırıp yeniden kur.
+
+"Bu bağlantı için indirilebilir medya bulunamadı" yazıyor:
+  O site/bağlantı desteklenmiyor olabilir, ya da içerik özel/kısıtlı
+  olabilir (giriş gerektiren, yaş kısıtlı, bölgesel engelli vb.).
+
+Program açılmıyor / hiçbir şey olmuyor:
+  Başlat menüsünden tekrar aramayı dene. Hâlâ açılmıyorsa programı
+  kaldırıp yeniden kur.
+
+Diğer teknik sorunlarda, program içindeki AYARLAR > SİSTEM bölümünden
+"Log klasörünü aç" ile hata kayıtlarına bakabilirsin.
+
+
+İyi kullanımlar.

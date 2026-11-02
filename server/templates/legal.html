@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="{{LANG}}" dir="{{DIR}}">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>{{PAGE_TITLE}} — getliyo</title>
+<meta name="description" content="{{PAGE_DESC}}">
+<link rel="canonical" href="{{CANONICAL}}">
+{{HREFLANG}}
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="icon" href="/favicon.ico" sizes="48x48">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<script src="/device.js"></script>
+<link rel="stylesheet" href="/style.css">
+</head>
+<body>
+<header class="nav"><div class="wrap nav-in">
+  <a class="logo" href="/{{LANG}}/" aria-label="{{t:nav.home}}"><img class="logo-mark" src="/brand-mark.png" alt=""><span>getliyo</span></a>
+  <div class="nav-end">
+    {{LANGSWITCH}}
+    <a class="btn ghost sm" href="/{{LANG}}/">{{t:legal.home}}</a>
+  </div>
+</div></header>
+<main class="legal">
+{{CONTENT}}
+</main>
+<footer class="foot">
+  <div class="wrap foot-in">
+    <p class="disclaimer">{{t:foot.disclaimer}}</p>
+    <nav aria-label="{{t:foot.nav}}">
+      <a href="/{{LANG}}/terms">{{t:foot.terms}}</a>
+      <a href="/{{LANG}}/privacy">{{t:foot.privacy}}</a>
+      <a href="/{{LANG}}/copyright">{{t:foot.copyright}}</a>
+      <a href="/{{LANG}}/cookies">{{t:foot.cookies}}</a>
+      <a href="/{{LANG}}/contact">{{t:foot.contact}}</a>
+    </nav>
+  </div>
+</footer>
+<script src="/guard.js"></script>
+<script src="/lang.js"></script>
+<script src="/site-config.js"></script>
+<script src="/legal.js"></script>
+</body>
+</html>
