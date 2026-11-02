@@ -4,6 +4,7 @@ __pycache__/
 .pytest_cache/
 dist/
 build/work/
+build/obfuscated/
 *.egg-info/
 bin/*.exe
 !bin/.gitkeep
