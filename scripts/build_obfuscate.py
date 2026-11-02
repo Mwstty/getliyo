@@ -22,7 +22,9 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 OUT = ROOT / "build" / "obfuscated"
-PYARMOR = ROOT / ".venv" / "Scripts" / "pyarmor.exe"
+_VENV_PYARMOR = ROOT / ".venv" / "Scripts" / "pyarmor.exe"
+# .venv yoksa (ör. CI) PATH'teki pyarmor kullanılır.
+PYARMOR = _VENV_PYARMOR if _VENV_PYARMOR.exists() else Path(shutil.which("pyarmor") or _VENV_PYARMOR)
 
 # PyArmor trial lisansı bu dosyada "out of license" veriyor (tek dosya boyut sınırı).
 EXCLUDE = ["app/ui/main_window.py"]
