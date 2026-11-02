@@ -43,6 +43,15 @@ jobs:
       - name: PyInstaller ile EXE oluştur
         run: python -m PyInstaller --noconfirm --clean --distpath dist --workpath build/work build/getliyo.spec
 
+      - name: EXE içeriğini doğrula (eksik paket varsa derlemeyi durdur)
+        shell: pwsh
+        run: |
+          $list = pyi-archive_viewer -l -b dist\getliyo.exe 2>&1 | Out-String
+          foreach ($m in "PySide6.QtWidgets", "PySide6.QtCore", "httpx", "fastapi", "yt_dlp", "bs4", "PIL") {
+            if ($list -notmatch [regex]::Escape($m)) { Write-Error "EXE içinde $m yok"; exit 1 }
+          }
+          Write-Host "EXE içeriği tamam."
+
       - name: Kurulum programı (Inno Setup)
         shell: pwsh
         run: |

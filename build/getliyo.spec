@@ -30,6 +30,50 @@ except Exception:
 for pkg in ("uvicorn", "server"):
     hiddenimports += collect_submodules(pkg)
 hiddenimports += runtime_dirs  # pyarmor çalışma zamanı (.pyd) — otomatik keşfedilemez
+
+
+# Karartılmış kodun import'ları PyInstaller tarafından okunamaz (PySide6, httpx, fastapi... pakete girmez).
+# Bu yüzden ham kaynaktaki (app/, server/) import'lar taranıp gizli import olarak eklenir.
+def _third_party_imports():
+    import ast
+    import sys
+
+    stdlib = set(sys.stdlib_module_names)
+    local = {"app", "server", "scripts"}
+    exact, tops = set(), set()
+    for folder in ("app", "server"):
+        for path in glob.glob(os.path.join(ROOT, folder, "**", "*.py"), recursive=True):
+            try:
+                tree = ast.parse(open(path, encoding="utf-8").read())
+            except (SyntaxError, UnicodeDecodeError):
+                continue
+            for node in ast.walk(tree):
+                if isinstance(node, ast.Import):
+                    names = [a.name for a in node.names]
+                elif isinstance(node, ast.ImportFrom) and node.level == 0 and node.module:
+                    names = [node.module] + [f"{node.module}.{a.name}" for a in node.names]
+                else:
+                    continue
+                for name in names:
+                    top = name.split(".")[0]
+                    if top in stdlib or top in local:
+                        continue
+                    exact.add(name)
+                    tops.add(top)
+    return exact, tops
+
+
+_exact, _tops = _third_party_imports()
+print("Bulunan üçüncü taraf paketler:", sorted(_tops))
+hiddenimports += sorted(_exact)
+for _top in _tops:
+    if _top in ("PySide6", "shiboken6"):  # tüm Qt'yi çekmemek için yalnızca kullanılan modüller (yukarıda)
+        continue
+    try:
+        hiddenimports += collect_submodules(_top)
+    except Exception:
+        pass
+hiddenimports += ["shiboken6"]
 datas = [
     (web_dir, os.path.join("server", "web")),
     (os.path.join(ROOT, "config"), "config"),
