@@ -54,8 +54,14 @@ jobs:
           }
           # Python modülleri: PyInstaller'ın PYZ içerik listesi
           $pyz = Get-Content build\work\getliyo\PYZ-00.toc -Raw
-          foreach ($m in 'httpx', 'fastapi', 'starlette', 'pydantic', 'yt_dlp', 'bs4', 'PIL', 'uvicorn', 'server.app') {
+          foreach ($m in 'httpx', 'fastapi', 'starlette', 'pydantic', 'yt_dlp', 'bs4', 'PIL', 'uvicorn') {
             if ($pyz -notmatch "'$([regex]::Escape($m))[.']") { $missing += $m }
+          }
+          # Kendi modüllerimiz: build\obfuscated altındaki her .py PYZ'de olmalı
+          Get-ChildItem build\obfuscated\app, build\obfuscated\server -Recurse -Filter *.py | ForEach-Object {
+            $rel = $_.FullName.Substring((Resolve-Path build\obfuscated).Path.Length + 1)
+            $mod = ($rel -replace '\.py$', '') -replace '\\', '.' -replace '\.__init__$', ''
+            if ($mod -ne 'app.main' -and $mod -ne 'app.native_host' -and $pyz -notmatch "'$([regex]::Escape($mod))'") { $missing += $mod }
           }
           if ($missing) { Write-Host "EXE içinde eksik: $($missing -join ', ')"; exit 1 }
           Write-Host "EXE içeriği tamam."

@@ -27,8 +27,25 @@ try:
 except Exception:
     pass
 # Gömülü yerel web sunucusu (server/ paketi, uvicorn protokol/döngü modülleri dinamik yüklenir)
-for pkg in ("uvicorn", "server"):
-    hiddenimports += collect_submodules(pkg)
+hiddenimports += collect_submodules("uvicorn")
+
+
+# Kendi paketlerimiz (app, server): karartılmış kodun import'ları görülemediği için tüm modüller
+# dosya sisteminden (build/obfuscated) tek tek gizli import olarak eklenir. Import edilmez, yalnızca adlandırılır.
+def _own_modules():
+    names = []
+    for pkg in ("app", "server"):
+        base = os.path.join(OBF, pkg)
+        for path in glob.glob(os.path.join(base, "**", "*.py"), recursive=True):
+            rel = os.path.relpath(path, OBF)[:-3].replace(os.sep, ".")
+            names.append(rel[: -len(".__init__")] if rel.endswith(".__init__") else rel)
+    return names
+
+
+_own = _own_modules()
+if not any(n == "app.main" for n in _own):
+    raise SystemExit("build/obfuscated/app/main.py bulunamadı.")
+hiddenimports += _own
 hiddenimports += runtime_dirs  # pyarmor çalışma zamanı (.pyd) — otomatik keşfedilemez
 
 
